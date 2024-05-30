@@ -12,7 +12,7 @@ let user_login_data = {
         user_password: entry.user_password
     }
 
-let response = await (await fetch('http://localhost/BACKEND/UserLogin.php?type=user_login', {
+let response = await (await fetch('http://localhost/BACKEND/User/UserLogin.php?type=user_login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

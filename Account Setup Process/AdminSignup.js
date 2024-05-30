@@ -9,7 +9,7 @@ form.addEventListener('submit',async (e)=>{
         admin_password:entry.admin_password
     }
 
-    let response = await (await fetch('http://localhost/BACKEND/Admin_signup.php?type=admin_signup', {
+    let response = await (await fetch('http://localhost/BACKEND/Admin/Admin_signup.php?type=admin_signup', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

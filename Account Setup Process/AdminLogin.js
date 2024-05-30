@@ -12,7 +12,7 @@ let data = {
         admin_password: entry.admin_password
     }
 
-let response = await (await fetch('http://localhost/BACKEND/Admin_login.php?type=admin_login', {
+let response = await (await fetch('http://localhost/BACKEND/Admin/Admin_login.php?type=admin_login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
