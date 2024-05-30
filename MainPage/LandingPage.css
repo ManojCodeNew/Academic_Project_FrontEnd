@@ -1,0 +1,20 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.navBar {
+    background-color: #1ad1ff;
+    padding: 30px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 1px 4px 10px gray;
+    border: black;
+}
+
+.LSP_logo {
+    border: 1px solid white;
+    width: 30px;
+    height: 30px;
+    /* padding: 20px; */
+}

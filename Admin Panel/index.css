@@ -15,7 +15,7 @@
 .box {
     width: 150px;
     height: 200px;
-    border: 1px solid white; 
+    border: 1px solid white;
 
 }
 
@@ -26,7 +26,8 @@
     color: aliceblue;
     border-radius: 10px;
 }
-.side_bar h2{
+
+.side_bar h2 {
     margin-left: 20px;
 }
 
@@ -165,7 +166,7 @@ body {
     font-size: larger;
     color: white;
     padding-bottom: 10px;
-    font-family:'Times New Roman', Times, serif;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .SD_txtbox {
@@ -178,10 +179,11 @@ body {
     background: #00000046;
     border-radius: 10px;
     border: none;
-    
+
 }
+
 /* SD_txtboxTime */
-.submitbtn{
+.submitbtn {
     width: 280px;
     height: 50px;
     margin-top: 20px;
@@ -198,47 +200,52 @@ body {
     display: flex;
     flex-wrap: wrap;
 } */
-.startTime{
+.startTime {
     display: flex;
     width: 10px;
 }
-.endTime{
+
+.endTime {
     display: flex;
     width: 10px;
 
 }
-#AMPM{
-background: #00000046;
-height: 45px;
-border-radius: 5px;
-margin-left: 3px;
-border: none;
-color: white;
+
+#AMPM {
+    background: #00000046;
+    height: 45px;
+    border-radius: 5px;
+    margin-left: 3px;
+    border: none;
+    color: white;
 }
 
 /* ProductDetails style section */
-.productdetail_container{
+.productdetail_container {
     margin: 5px;
     padding-left: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+
     border-radius: 10px;
 }
-.PD_Heading{
+
+.PD_Heading {
     text-align: center;
     font-size: x-large;
     color: white;
 }
-.PD_label{
+
+.PD_label {
     font-weight: 900;
     font-size: larger;
     color: white;
     padding-bottom: 10px;
-    font-family:'Times New Roman', Times, serif;
+    font-family: 'Times New Roman', Times, serif;
 }
-.PD_textbox{
+
+.PD_textbox {
 
     padding: 15px;
     margin: 10px;
@@ -246,7 +253,8 @@ color: white;
     border: none;
     width: 240px;
 }
-.PD_Display{
+
+.PD_Display {
     /* padding-left: 50vw; */
     width: 80vw;
     height: 500px;
@@ -254,60 +262,67 @@ color: white;
     /* flex-direction: column; */
     border: 1px solid white;
 }
-.product{
+
+.product {
     border: 1px solid white;
     display: flex;
     align-items: center;
     /* justify-content: center; */
 }
-.PD_addbtn{
+
+.PD_addbtn {
 
     margin-top: 2px;
     margin-left: 10px;
     padding: 10px;
-    display:inline-block ;
+    display: inline-block;
     border-radius: 10px;
     color: white;
     background: blue;
 
 }
-.P_img{
+
+.P_img {
     margin-left: 20px;
     /* padding: 15px; */
-    background:linear-gradient(to bottom,#7573735d,#e7e7e79b);
+    background: linear-gradient(to bottom, #7573735d, #e7e7e79b);
     display: inline-block;
-    border:none;
+    border: none;
 }
-.P_name{
+
+.P_name {
     display: inline-block;
     margin-left: 30px;
-    background:linear-gradient(to bottom,#7573735d,#e7e7e79b);
+    background: linear-gradient(to bottom, #7573735d, #e7e7e79b);
 
     padding: 10px;
     border: 1px solid white;
 }
-.P_price{
+
+.P_price {
     display: inline-block;
     margin-left: 30px;
-    background:linear-gradient(to bottom,#7573735d,#e7e7e79b);
+    background: linear-gradient(to bottom, #7573735d, #e7e7e79b);
 
     padding: 10px;
     border: 1px solid white;
 }
-.P_maindesc{
+
+.P_maindesc {
     display: inline-block;
     margin-left: 30px;
-    background:linear-gradient(to bottom,#7573735d,#e7e7e79b);
+    background: linear-gradient(to bottom, #7573735d, #e7e7e79b);
     width: 100px;
     height: 40px;
     /* overflow-y: scroll; */
     /* padding: 10px; */
     border: 1px solid white;
 }
-.P_desc{
+
+.P_desc {
     display: inline-block;
     margin-left: 30px;
-    background:linear-gradient(to bottom,#7573735d,#e7e7e79b);
+    background: linear-gradient(to bottom, #7573735d, #e7e7e79b);
     width: 150px;
     height: 60px;
     overflow-y: scroll;

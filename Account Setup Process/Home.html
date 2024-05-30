@@ -1,29 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="Home.css">
 </head>
+
 <body>
     <div class="container">
         <div class="header">
-        <h2 class="welcome_txt">Welcome to Local Shop Connect</h2>
-    </div>
-    <div class="options">
-        <h3>Are your an Admin or a User ?</h3>
-        <div class="admin_option">
-            <h3>Admin</h3>
-            <p>Mange your shop, other details and more...</p>
-            <button onclick="window.location.href='AdminLogin.html'">Admin</button>
+            <h2 class="welcome_txt">Welcome to Local Shop Connect</h2>
+        </div>
+        <div class="options">
+            <!-- admin -->
+            <h3>Are your an Admin or a User ?</h3>
+            <div class="admin_option">
+                <h3>Admin</h3>
+                <p>Mange your shop, other details and more...</p>
+                <button onclick="window.location.href='AdminLogin.html'">Admin</button>
+            </div>
+        </div>
+        <!-- User -->
+        <div class="user_option">
+            <h3>User</h3>
+            <p>Explore local shops, order products and more...</p>
+            <button onclick="window.location.href='UserLogin.html'">User</button>
         </div>
     </div>
-    <div class="user_option">
-        <h3>User</h3>
-        <p>Explore local shops, order products and more...</p>
-        <button onclick="window.location.href='UserLogin.html'">User</button>
-    </div>
-    </div>
 </body>
+
 </html>
