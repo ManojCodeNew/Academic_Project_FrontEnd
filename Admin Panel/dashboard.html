@@ -59,8 +59,8 @@
                         <label for="Time" class="SD_labels">Time</label><br>
 
                         <div class="startTime">
-                            <input type="text" name="Start_time" class="SD_txtbox" value="1"><br>
-                            <input type="text" name="Start_minutes" class="SD_txtbox" value="1">
+                            <input type="text" name="Start_time" class="SD_txtbox" min="" max="12" value="" placeholder="Start Hour"><br>
+                            <input type="text" name="Start_minutes" class="SD_txtbox" min="" max="60" value="" placeholder="Start Minutes">
 
                             <select id="AMPM" name="Start_AMPM">
                                 <option value="AM">AM</option>
@@ -68,8 +68,8 @@
                             </select>
                         </div>
                         <div class="endTime">
-                            <input type="text" name="End_time" class="SD_txtbox" value="2"><br>
-                            <input type="text" name="End_minutes" class="SD_txtbox" value="2">
+                            <input type="text" name="End_time" class="SD_txtbox" value="" min="1" max="12" placeholder="End Hour"><br>
+                            <input type="text" name="End_minutes" class="SD_txtbox" value="" min="1" max="60" placeholder="End Minutes">
                             <br>
                             <select id="AMPM" name="End_AMPM">
                                 <option value="AM">AM</option>
@@ -92,7 +92,7 @@
                     <abbr title="This email used to get updates for this website">
                         <input type="text" name="email" class="SD_txtbox" required></abbr><br>
 
-                    <button name="shop_submit" class="SD_submitbtn" onclick="shopdetails_submit()">Submit</button>
+                    <button name="shop_submit" class="SD_submitbtn" onclick="shopdetails_form_submit_handle()">Submit</button>
                 </form>
             </div>
         </div>
@@ -134,6 +134,7 @@
         
 
             <div class="add_product_form" style="display: none;">
+                <!-- <form action="" method="post" class="product_form"> -->
                 <label for="pname" class="PD_form_label">Product Name :</label><br>
                 <input type="text" name="pname_input" class="PD_form_textbox" required><br>
 
@@ -147,10 +148,12 @@
                 <input type="url" name="product_img_input" class="PD_form_textbox" id="img" required><br>
 
                 <button name="product_submit" class="submitbtn" onclick="product_submit()">Submit</button>
+            <!-- </form> -->
             </div>
         </div>
         </div>
-
+<div class="shop_view_conatiner" style="display: none;">
+</div>
         </body>
 <script src="dashboard.js"></script>
 <script src="dashboardAction.js"></script>

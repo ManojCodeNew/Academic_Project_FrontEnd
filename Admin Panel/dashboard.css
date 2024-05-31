@@ -411,3 +411,32 @@ body {
     cursor: pointer;
     font-size: 16px;
 }
+.shop_view_conatiner{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(113, 113, 113);
+    width: 40vw;
+    height: 100vh;
+    margin: auto;
+    padding: 20px;
+}
+.shop_img_container{
+    width: 40vw;
+    height: 30vh;
+    border: 2px solid white;
+    transition: transform 0.2s ease-in-out;
+
+}
+.shop_img_container:hover{
+    transform: scale(1.05);
+}
+.shop_logo_container{
+    margin-bottom: 90px;
+    width: 20vw;
+    height: 10vh;
+    border-radius: 20px;
+    border: 2px solid white;
+
+}
