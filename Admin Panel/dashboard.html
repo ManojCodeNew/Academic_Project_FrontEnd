@@ -4,54 +4,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop Details</title>
-    <link rel="stylesheet" href="index.css">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="dashboard.css">
 </head>
 
 <body>
-    <div class="container">
+    <div class="Parent_of_dashboard">
         <div class="side_bar">
             <h2>Admin</h2>
 
             <div class="profile">
-                <img src="Docker Swarm.jpg" alt="profile logo" width="35px" height="35px" class="profile_img">
+                <img src="" alt="profile logo" width="35px" height="35px" class="profile_img">
                 <div class="profile_name"><span class="shop_owner_name"></span>
-                    <br><span class="desc">Shop Owner</span>
+                    <br><span class="profile_desc">Shop Owner</span>
                 </div>
             </div>
             <hr>
             <!-- Shop Details section -->
             <div class="section">
-                <div class="dashboard">
-                    <a href="dashboard.html" class="dashboard_link">
-
-                        <h3>DashBoard</h3>
-                    </a>
+                <div class="shopdetails_btn_container" onclick="shopdetails_click_handle()">
+                    <h3 class="shopdetails_btn">Shop Details</h3>
                 </div>
-                <div class="shopdetails">
-                    <a href="shopdetails.html" class="shopdetails_link">
 
-                        <h3>Shop Details</h3>
-                    </a>
-
-                </div>
                 <!-- Product Details section -->
-                <div class="productdetails">
-                    <a href="productdetails.html" class="shopdetails_link">
-                        <h3>Product Details</h3>
-                    </a>
+                <div class="productdetails_btn_container" onclick="productdetails_click_handle()">
+                    <h3>Product Details</h3>
                 </div>
+
+            </div>
+
+
+            <div class="LogoutBtn">
+                <h4 onclick="logout()">LOGOUT</h4>
             </div>
         </div>
-        <div class="body">
 
+        <!-- Shop Details Feilds -->
+        <div class="Shopdetails_body" style="display :none;">
+            <div class="shopdetail_Container">
+                <h3 class="SD_heading">SHOP DETAILS</h3>
+                <form action="" method="post" id="SD_Form">
+                    <label for="sname" class="SD_labels">Shop Name</label><br>
+                    <input type="text" name="sname" class="SD_txtbox" required><br>
+
+                    <label for="Oname" class="SD_labels">Owner Name</label><br>
+                    <input type="text" name="Oname" class="SD_txtbox" required><br>
+
+                    <label for="Category" class="SD_labels">Shop Category</label><br>
+                    <input type="text" name="Category" class="SD_txtbox" required><br>
+
+                    <label for="Location" class="SD_labels">Location</label><br>
+                    <input type="text" name="Location" class="SD_txtbox" required><br>
+                    <div class="Time">
+                        <label for="Time" class="SD_labels">Time</label><br>
+
+                        <div class="startTime">
+                            <input type="text" name="Start_time" class="SD_txtbox" value="1"><br>
+                            <input type="text" name="Start_minutes" class="SD_txtbox" value="1">
+
+                            <select id="AMPM" name="Start_AMPM">
+                                <option value="AM">AM</option>
+                                <option value="PM">PM</option>
+                            </select>
+                        </div>
+                        <div class="endTime">
+                            <input type="text" name="End_time" class="SD_txtbox" value="2"><br>
+                            <input type="text" name="End_minutes" class="SD_txtbox" value="2">
+                            <br>
+                            <select id="AMPM" name="End_AMPM">
+                                <option value="AM">AM</option>
+                                <option value="PM">PM</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <label for="ImgUrl" class="SD_labels">Shop Image URL</label><br>
+                    <input type="url" name="ImgUrl" class="SD_txtbox" required><br>
+
+                    <label for="logoUrl" class="SD_labels">Shop Logo URL</label><br>
+                    <input type="url" name="logoUrl" class="SD_txtbox"><br>
+
+                    <label for="contactdetails" class="SD_labels">Contact Details</label><br>
+                    <input type="text" name="contactdetails" class="SD_txtbox"><br>
+
+                    <label for="email" class="SD_labels">Shop Email</label><br>
+                    <abbr title="This email used to get updates for this website">
+                        <input type="text" name="email" class="SD_txtbox" required></abbr><br>
+
+                    <button name="shop_submit" class="SD_submitbtn" onclick="shopdetails_submit()">Submit</button>
+                </form>
+            </div>
         </div>
-    </div>
-    <div class="dashboard_container">
-        <h3>Dash Board</h3>
-    </div>
 
-</body>
+
+        <!-- Product Details Feilds -->
+<div class="products_action" style="display: none;">
+
+            <div class="Productdetails_body">
+
+                <div class="Productdetails_container">
+                    <!-- Product Add Button -->
+                    <div class="product_add_btn_container" >
+                        <h3 onclick="product_add_btn_clicked()" class="product_add_btn">Add a product</h3>
+                    </div>
+
+                    <!-- Products Showing -->
+                    <h2 class="Products_heading">Products</h2>
+                    <div class="product_display_root_container" style="display: none;">
+                        <div class="Productdetails_display_container">
+
+                            <div class="product_display">
+                                <img src="" class="Product_img" alt="Img" width="40px" height="50px"></img>
+                                <h4 class="Product_name">Product Name
+                                </h4>
+                                <h4 class="Product_price">100</h4>
+                                <h4 class="Product_desc">Description</h4>
+                            </div>
+
+                            <div class="product_remove_btn">
+                                <h5>Delete</h5>
+                            </div>
+                        </div>
+
+            
+                </div>
+            </div>
+
+        
+
+            <div class="add_product_form" style="display: none;">
+                <label for="pname" class="PD_form_label">Product Name :</label><br>
+                <input type="text" name="pname_input" class="PD_form_textbox" required><br>
+
+                <label for="price" class="PD_form_label">Price :</label><br>
+                <input type="number" name="price_input" class="PD_form_textbox" required><br>
+
+                <label for="desc" class="PD_form_label">Description :</label><br>
+                <textarea class="PD_form_textbox" name="desc_input" rows="4" cols="50" placeholder="Enter your product description here..." required></textarea><br>
+
+                <label for="product_img" class="PD_form_label">Product Image Url :</label><br>
+                <input type="url" name="product_img_input" class="PD_form_textbox" id="img" required><br>
+
+                <button name="product_submit" class="submitbtn" onclick="product_submit()">Submit</button>
+            </div>
+        </div>
+        </div>
+
+        </body>
 <script src="dashboard.js"></script>
+<script src="dashboardAction.js"></script>
+<script src="Shopdetails.js"></script>
 
 </html>

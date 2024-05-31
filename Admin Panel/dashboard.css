@@ -1,0 +1,413 @@
+/* Main Page style */
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: rgb(94, 91, 91);
+}
+
+/* Main Page style End */
+
+/* Main div style */
+.Parent_of_dashboard {
+    display: flex;
+}
+
+/* Main div style end */
+
+/* Logout Button Style */
+.LogoutBtn h4 {
+    height: 50px;
+    text-align: center;
+    align-content: center;
+    border: 1px solid gray;
+    border-radius: 10px;
+    margin-top: 420px;
+    cursor: pointer;
+    transition: background-color 0.4s ease;
+
+}
+
+.LogoutBtn h4:hover {
+    width: 246px;
+    background: red;
+    border: 1px solid gray;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 420px;
+    padding-top: 1px;
+}
+
+/* Logout Button Style End */
+
+/* Side bar design */
+.side_bar {
+    width: 250px;
+    height: 100vh;
+    background: black;
+    color: aliceblue;
+    border-radius: 10px;
+}
+
+
+/* .side_bar h2 {
+    margin-left: 20px;
+
+} */
+
+
+
+/* .section {
+    color: aliceblue;
+} */
+
+/* Profile image and name styles */
+.profile {
+    display: flex;
+    flex-direction: row;
+    padding: 1%;
+    border-radius: 12px;
+    margin-left: 10px;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.profile:hover {
+    background-color: rgb(62, 61, 61);
+}
+
+.profile_img {
+    border-radius: 50%;
+    border: 1px solid white;
+    box-shadow: 0px 0px 10px 0px rgba(231, 219, 219, 0.1);
+
+}
+
+.profile_name {
+    padding-bottom: 3%;
+    padding-left: 5%;
+    margin: 0;
+
+}
+
+.profile_desc {
+    margin: 0;
+    color: rgb(88, 85, 85);
+    font-size: small;
+}
+
+/* Profile image and name styles End*/
+
+
+/* Shop Details text button Design section */
+.shopdetails_btn_container {
+    color: azure;
+    border-radius: 10px;
+
+}
+
+/* Shop details text Modify */
+.shopdetails_btn_container h3 {
+    padding: 8px;
+    margin-left: 10%;
+
+}
+
+.shopdetails_btn_container:hover {
+    background-color: rgb(62, 61, 61);
+    transition: background-color 0.4s ease;
+}
+
+/* Shop Details text button Design section End */
+
+
+/* Product Details text button Design section */
+.productdetails_btn_container {
+    color: azure;
+    border-radius: 10px;
+}
+
+.productdetails_btn_container h3 {
+    padding: 8px;
+    margin-left: 10%;
+}
+
+.productdetails_btn_container:hover {
+    background-color: rgb(62, 61, 61);
+}
+
+/* Product Details text button Design section  End*/
+
+
+/* Shop Details body design section  */
+.Shopdetails_body {
+    flex-grow: 1;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.shopdetail_Container {
+    margin: 5px;
+    padding-left: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.SD_heading {
+    text-align: center;
+    font-size: x-large;
+    color: white;
+}
+
+.SD_labels {
+
+    font-weight: 900;
+    font-size: larger;
+    color: white;
+    padding-bottom: 10px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.SD_txtbox {
+    margin-bottom: 10px;
+    padding: 20px;
+    width: 50vw;
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background: #00000046;
+    border-radius: 10px;
+    border: none;
+
+}
+
+/* SD_txtboxTime */
+.SD_submitbtn {
+    width: 280px;
+    height: 50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    color: white;
+    font-size: large;
+    font-weight: 700;
+    border: none;
+    background-color: rgb(24, 1, 155);
+}
+
+.startTime {
+    display: flex;
+    width: 10px;
+}
+
+.endTime {
+    display: flex;
+    width: 10px;
+
+}
+
+#AMPM {
+    background: #00000046;
+    height: 45px;
+    border-radius: 5px;
+    margin-left: 3px;
+    border: none;
+    color: white;
+}
+
+/* Shop Details body design section  End */
+
+
+/* ProductDetails Body design */
+.productdetail_container {
+    /* width: 800px; */
+    margin: 5px;
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.PD_Heading {
+    text-align: center;
+    font-size: x-large;
+    color: white;
+}
+
+.PD_label {
+    font-weight: 900;
+    font-size: larger;
+    color: white;
+    padding-bottom: 10px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.PD_textbox {
+
+    padding: 15px;
+    margin: 10px;
+    border-radius: 10px;
+    border: none;
+    width: 240px;
+}
+
+.Productdetails_body {
+    border: 1px solid white;
+
+    width: 70vw;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+
+
+/* Products display design */
+.Productdetails_display_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-height: 70vh;
+    color: rgb(0, 0, 0);
+  
+
+}
+
+.product_display {
+    display: flex;
+    flex-grow: 1;
+    /* flex-direction: row; */
+    justify-content: space-between;
+    margin-top: 10px;
+    border-radius: 10px;
+    padding: 10px;
+    background: rgb(255, 255, 255);
+}
+
+.Product_name,
+.Product_price,
+.Product_desc {
+    margin: 0;
+    padding: 0 10px;
+    width: 150px;
+    /* Static width */
+    max-width: 150px;
+    /* Ensure the width doesn't exceed 150px */
+    word-wrap: break-word;
+    /* Break words that are too long */
+    overflow-wrap: break-word;
+    /* Wrap long words to the next line */
+    white-space: normal;
+    /* Allow text to wrap to the next line */
+}
+
+.Product_img {
+    width: 60px;
+    height: 50px;
+}
+
+.product_remove_btn {
+    display: flex;
+    flex-direction: column;
+}
+
+.product_remove_btn h5 {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #ff0821;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    margin-left: 10px;
+    /* align-content: center; */
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.Products_heading {
+    color: yellow;
+}
+
+.product_add_btn_container {
+    display: inline-block;
+    padding: 1px 5px;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    margin-left: 10px;
+    margin: 10px;
+}
+
+.product_display_root_container{
+    width: calc(100%-40px);
+    height: 70vh;
+    box-sizing: content-box;
+    overflow: auto;
+    
+}
+/* Remove scrolling object */
+.product_display_root_container::-webkit-scrollbar{
+    width: 0;
+    height: 0;
+}
+.product_display_root_container{
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.add_product_form{
+    
+    display: block; 
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    align-content: center;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    box-sizing: border-box;
+
+}
+.PD_form_label{
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+.PD_form_textbox{
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.submitbtn {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}

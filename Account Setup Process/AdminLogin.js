@@ -30,4 +30,4 @@ formtag.addEventListener('submit', async (e) => {
     }
     console.log(response);
 
-})
+});

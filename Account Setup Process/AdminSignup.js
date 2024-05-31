@@ -26,7 +26,6 @@ form.addEventListener('submit',async (e)=>{
         }else{
             alert("Email and password is invalid");
         }
-        
     }
     console.log(response);
     
