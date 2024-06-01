@@ -22,10 +22,20 @@ if (logout_status == 1) {
     const query = new URLSearchParams(urlObj.search);
     const query_admin_id = query.get('admin_id');
 
-    // Store id to the localstorage
-    localStorage.setItem('admin_id',query_admin_id);
+// Check localstorage precense  (it checks at the beggining if  localStorage have already data  I will consider this privious one so i can clear() localstorage then i store fresh value)
+    let localStorage_presence = localStorage.getItem('admin_id');
+    if (localStorage_presence) {
+        console.log("locaStorage", localStorage_presence);
+        localStorage.clear();  //Clear LocalStorage
+        window.location.reload();
+
+    }
+    else {
+        // Store id to the localstorage
+        localStorage.setItem('admin_id', query_admin_id);
+    }
     // Access localstorage data
-    let localstorage_admin_id=localStorage.getItem('admin_id');
+    let localstorage_admin_id = localStorage.getItem('admin_id');
 
     let shop_owner_name_container = document.querySelector(".shop_owner_name");
     let shop_profile_img_container = document.querySelector(".profile_img");
@@ -50,12 +60,14 @@ if (logout_status == 1) {
             console.log(dashboard_backend_response);
 
         } else {
+            // Shop presence set
+            localStorage.setItem('shop', '1');
             // Storing Shop details to the localstorage
-            localStorage.setItem('shopdetails',JSON.stringify(dashboard_backend_response));
+            localStorage.setItem('shopdetails', JSON.stringify(dashboard_backend_response));
             shop_owner_name_container.innerHTML = dashboard_backend_response.ownername;
             shop_profile_img_container.src = dashboard_backend_response.logoUrl;
         }
-        console.log("dashboard",dashboard_backend_response);
+        console.log("dashboard", dashboard_backend_response);
     });
 }
 
