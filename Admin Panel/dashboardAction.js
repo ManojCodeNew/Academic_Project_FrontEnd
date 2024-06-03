@@ -1,3 +1,5 @@
+
+
 // New Product adding button click handle
 function product_add_btn_clicked() {
     let product_action = document.querySelector(".products_action");
@@ -10,19 +12,11 @@ function product_add_btn_clicked() {
 
 }
 
-// product submit button handle
-let productdetails_btn_container = document.querySelector('.productdetails_btn_container');
-// Product add Submit Button Proccess
+
+//Submit Button Proccess
 function product_submit_handle() {
-    reload();
-    let product_action = document.querySelector(".products_action");
-    let product_add_form = document.querySelector(".add_product_form");
-    let product_display_root_container = document.querySelector(".product_display_root_container");
-
-    product_action.style.display = "block";
-    product_add_form.style.display = "none";
-    product_display_root_container.style.display = "block";
-
+    let productdetails_btn_container = document.querySelector('.productdetails_btn_container');
+    productdetails_btn_container.click();
 }
 
 
@@ -50,9 +44,10 @@ product_details_form.addEventListener('submit', async (e) => {
         body: JSON.stringify(product_data_container)
     })
     ).json();
-    console.log("product return", response);
-})
 
+console.log(response);
+
+})
 
 // product_submit_handle button clicking section 
 function reload() {
