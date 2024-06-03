@@ -411,6 +411,18 @@ body {
     cursor: pointer;
     font-size: 16px;
 }
+
+
+
+/* shop_view_root_container */
+
+.shop_view_root_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
 .shop_view_conatiner{
     display: flex;
     flex-direction: column;
@@ -418,9 +430,11 @@ body {
     align-items: center;
     background-color: rgb(113, 113, 113);
     width: 40vw;
-    height: 100vh;
+    height: 80vh;
     margin: auto;
     padding: 20px;
+    overflow: auto;
+    border-radius: 10px;
 }
 .shop_img_container{
     width: 40vw;
@@ -439,4 +453,29 @@ body {
     border-radius: 20px;
     border: 2px solid white;
 
+}
+
+/* shop_delete_button */
+.shop_delete_button{
+    display: flex;
+    width: 30vw;
+    height: fit-content;
+    padding: 15px;
+    margin: auto;
+    margin-top: 10px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(248, 29, 29);
+    color: white;
+    border: none;
+    font-family:serif;
+    border-radius: 10px;
+    font-size: larger;
+    cursor: pointer;
+}
+.shop_delete_button:hover{
+   background-color: rgb(185, 138, 138);
+   color: black;
+   font-weight: 600;
+   font-size: larger;
 }

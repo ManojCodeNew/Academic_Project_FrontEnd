@@ -24,7 +24,7 @@ form.addEventListener('submit',async (e)=>{
         
             window.location.href="http://127.0.0.1:5500/Admin%20Panel/dashboard.html?admin_id="+response.id;
         }else{
-            alert("Email and password is invalid");
+            alert(response.Error);
         }
     }
     console.log(response);
