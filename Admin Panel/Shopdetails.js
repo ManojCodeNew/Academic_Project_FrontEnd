@@ -104,9 +104,12 @@ async function productdetails_click_handle() {
 
 }
 
+let products_data = new Set();
+let Productdetails_display_container = document.querySelector('.product_display_root_container');
+
 // Send request to the backend to access updated products
 async function fetchUpdatedProductData() {
-
+    product_display_root_container.innerHTML = '';
     let shop_data = {
         shop_id: localStorage.getItem('admin_id')
     }
@@ -119,35 +122,46 @@ async function fetchUpdatedProductData() {
     })
     ).json();
 
+    // clear the set() data
+    products_data.clear();
+    backend_response.forEach(products => {
+        products_data.add(products);
+    });
+
+    let Unique_products = Array.from(products_data);
+    console.log("set", Unique_products);
     product_display_root_container.style.display = "block";
     products_action.style.display = "block";
-    backend_response.forEach((products) => {
-        let Productdetails_display_container = document.querySelector('.product_display_root_container');
+
+    Unique_products.reverse().forEach((products) => {
+        product_display_root_container.id = products.product_no;
         let product_display = document.createElement('div');
-        product_display.className="product_display";
+        // product_display.innerHTML='';
+        product_display.className = "product_display";
         let product_img = document.createElement('img');
-        product_img.width="20";
-        product_img.height="20";
+        product_img.width = "20";
+        product_img.height = "20";
 
         let product_price = document.createElement('h5');
         let Product_name = document.createElement('h4');
 
         let product_desc = document.createElement('div');
-        product_desc.className="product_desc";
-        let product_delete_btn_container=document.createElement('div');
-        product_delete_btn_container.className="delete_btn_container";
-        let product_delete_btn=document.createElement('h5');
-        product_delete_btn.className="delete_btn";
-        product_delete_btn.innerHTML="Delete";
-        
+        product_desc.className = "product_desc";
+        let product_delete_btn_container = document.createElement('div');
+        product_delete_btn_container.className = "delete_btn_container";
+        product_delete_btn_container.id = products.product_no;
+        let product_delete_btn = document.createElement('h5');
+        product_delete_btn.className = "delete_btn";
+        product_delete_btn.innerHTML = "Delete";
 
-        product_img.src=products.product_url;
+
+        product_img.src = products.product_url;
 
         Product_name.innerHTML = products.productname;
 
-        product_price.innerHTML=products.price;
+        product_price.innerHTML = products.price;
 
-        product_desc.innerHTML=products.product_desc;
+        product_desc.innerHTML = products.product_desc;
 
         Productdetails_display_container.appendChild(product_display);
         product_display.appendChild(product_img);
@@ -158,7 +172,30 @@ async function fetchUpdatedProductData() {
         product_delete_btn_container.appendChild(product_delete_btn);
 
 
-        console.log(products);
+        // Delete product action
+        product_delete_btn_container.addEventListener('click', async () => {
+            let delete_confirm = window.confirm("Are you sure you want to delete this product?");
+            if (delete_confirm) {
+
+
+                let deleted_product = {
+                    product_id: product_delete_btn_container.id
+                }
+                let product_delete_response = await (await fetch('http://localhost/backend/ADMIN/Admin_action/Productdetails.php?type=delete_product', {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(deleted_product)
+                })
+                ).json();
+                if (product_delete_response) {
+                    let productdetails_btn_container = document.querySelector('.productdetails_btn_container');
+                    productdetails_btn_container.click();
+                    setTimeout(fetchUpdatedProductData, 1000);
+                }
+            }
+        })
 
     });
 

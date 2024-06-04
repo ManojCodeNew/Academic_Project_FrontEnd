@@ -9,6 +9,8 @@ function product_add_btn_clicked() {
     product_action.style.display = "block";
     product_add_form.style.display = "block";
     product_display_root_container.style.display = "none";
+    // productdetails_click_handle().reset();
+    
 
 }
 
@@ -17,6 +19,7 @@ function product_add_btn_clicked() {
 function product_submit_handle() {
     let productdetails_btn_container = document.querySelector('.productdetails_btn_container');
     productdetails_btn_container.click();
+    setTimeout(fetchUpdatedProductData, 1000); 
 }
 
 

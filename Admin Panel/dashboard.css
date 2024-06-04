@@ -382,23 +382,22 @@ body {
     justify-content:space-between;
 } 
 .delete_btn_container{
-    margin-bottom: auto;
-    /* justify-content: center; */
-    align-items: center;
-    width: 50px;
-    height: 30px;
-    padding: 1px;
-    background: red;
+ 
 }
 
 .delete_btn{
-    margin-top: auto;
-    margin-bottom: auto;
-    margin: auto;
+   border: 1px solid rgb(0, 0, 0);
+   justify-content: center;
+align-items: center;
+align-content: center;
+padding: 6px;
+background-color: red;
+border-radius: 7px;
+
+ 
 }
 
 .add_product_form{
-    
     display: block; 
     justify-content: center;
     margin-left: auto;
