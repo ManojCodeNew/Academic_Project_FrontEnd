@@ -22,7 +22,12 @@ function shopdetails_click_handle() {
             shop_view_container.id = "shop_displayed";
             shop_view_container.style.display = "block";
             let shop_img_container = document.createElement('img');
+
             shop_img_container.className = "shop_img_container";
+
+
+           
+
             shop_img_container.src = Shop_details_container['shopdetails'][0].ShopImgurl;
             shop_view_container.appendChild(shop_img_container);
 
@@ -202,6 +207,7 @@ async function fetchUpdatedProductData() {
     localStorage.setItem("product", JSON.stringify(backend_response));
 }
 
+
 // Shop details form data
 let shop_details_form = document.querySelector('#SD_Form');
 shop_details_form.addEventListener('submit', async (e) => {
@@ -209,18 +215,15 @@ shop_details_form.addEventListener('submit', async (e) => {
     // Formdata object used to get the input data and access the data based on the 'name' attribute .
     const form_data = new FormData(e.target);
     const entry = Object.fromEntries(form_data.entries());
-    // if (((entry.Start_time && entry.End_time>= 1) && (entry.Start_time && entry.End_time <=12)) && ((entry.Start_minutes && entry.End_minutes>= 1) && (entry.Start_minutes && entry.End_minutes <=60))) {
-    // let Start_Time=entry.Start_time+" : "+entry.Start_minutes+"  "+entry.Start_AMPM;
-    // let End_Time=entry.End_time+" : "+entry.End_minutes+"  "+entry.End_AMPM;
-    // console.log(Start_Time+" - "+End_Time);
-
-    // }else{
-    //     alert("Invalid Time");
-
-    // }
     let Start_Time = entry.Start_time + " : " + entry.Start_minutes + "  " + entry.Start_AMPM;
     let End_Time = entry.End_time + " : " + entry.End_minutes + "  " + entry.End_AMPM;
 
+    // user selected shop image file to blob file 
+    const ShopImgUrl = URL.createObjectURL(entry.ImgUrl);
+
+    // user selected shop Logo image file to blob file 
+    const ShopLogoUrl = URL.createObjectURL(entry.logoUrl);
+console.log(ShopImgUrl);
 
     // Shop id access to the localstorage
     let admin_id = localStorage.getItem('admin_id');
@@ -231,8 +234,8 @@ shop_details_form.addEventListener('submit', async (e) => {
         shop_category: entry.Category,
         shop_location: entry.Location,
         shop_timings: Start_Time + " - " + End_Time,
-        shop_imgUrl: entry.ImgUrl,
-        shop_logoUrl: entry.logoUrl,
+        shop_imgUrl: ShopImgUrl,
+        shop_logoUrl: ShopLogoUrl,
         shop_contact_details: entry.contactdetails,
         shop_email: entry.email,
     }

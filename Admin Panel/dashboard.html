@@ -59,9 +59,9 @@
                         <label for="Time" class="SD_labels">Time</label><br>
 
                         <div class="startTime">
-                            <input type="text" name="Start_time" class="SD_txtbox" min="" max="12" value=""
+                            <input type="number" name="Start_time" class="SD_txtbox" min="1" max="12" value=""
                                 placeholder="Start Hour"><br>
-                            <input type="text" name="Start_minutes" class="SD_txtbox" min="" max="60" value=""
+                            <input type="number" name="Start_minutes" class="SD_txtbox" min="1" max="60" value=""
                                 placeholder="Start Minutes">
 
                             <select id="AMPM" name="Start_AMPM">
@@ -70,9 +70,9 @@
                             </select>
                         </div>
                         <div class="endTime">
-                            <input type="text" name="End_time" class="SD_txtbox" value="" min="1" max="12"
+                            <input type="number" name="End_time" class="SD_txtbox" value="" min="1" max="12"
                                 placeholder="End Hour"><br>
-                            <input type="text" name="End_minutes" class="SD_txtbox" value="" min="1" max="60"
+                            <input type="number" name="End_minutes" class="SD_txtbox" value="" min="1" max="60"
                                 placeholder="End Minutes">
                             <br>
                             <select id="AMPM" name="End_AMPM">
@@ -84,10 +84,10 @@
                     </div>
 
                     <label for="ImgUrl" class="SD_labels">Shop Image URL</label><br>
-                    <input type="url" name="ImgUrl" class="SD_txtbox" required><br>
+                    <input type="file" name="ImgUrl" accept="Image/*" class="SD_txtbox" required><br>
 
                     <label for="logoUrl" class="SD_labels">Shop Logo URL</label><br>
-                    <input type="url" name="logoUrl" class="SD_txtbox"><br>
+                    <input type="file" name="logoUrl" accept="Image/*" class="SD_txtbox"><br>
 
                     <label for="contactdetails" class="SD_labels">Contact Details</label><br>
                     <input type="text" name="contactdetails" class="SD_txtbox"><br>
@@ -118,14 +118,6 @@
                     <h2 class="Products_heading">Products</h2>
                     <div class="product_display_root_container" style="display: none;">
                         <div class="Productdetails_display_container">
-
-                            <!-- <div class="product_display"> -->
-                                <!-- <img src="" class="Product_img" alt="Img" width="40px" height="50px"></img>
-                                <h4 class="Product_name">Product Name
-                                </h4>
-                                <h4 class="Product_price">100</h4>
-                                <h4 class="Product_desc">Description</h4> -->
-                            <!-- </div> -->
 
                             <div class="product_remove_btn">
                                 <h5>Delete</h5>

@@ -78,6 +78,10 @@ let shop_profile_img_container = document.querySelector(".profile_img");
         console.log("dashboard", dashboard_backend_response);
     
     });
+    let convertedImage="blob:http://127.0.0.1:5500/0a123751-f2b5-4f2e-be63-53edf9adf36f";
+    
+   let b=URL.revokeObjectURL(convertedImage);
+   console.log(b);
 
 
 
