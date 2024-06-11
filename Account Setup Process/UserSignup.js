@@ -20,7 +20,7 @@ form.addEventListener('submit', async (e) => {
     if (response) {
         if (response.uid) {
             alert("Account Created Successfully");
-            window.location.href = "http://127.0.0.1:5500/MainPage/LandingPage.html?admin_id=" + response.uid;
+            window.location.href = "http://127.0.0.1:5500/MainPage/LandingPage.html?user_id=" + response.uid;
         } else {
             alert("Email and password is invalid");
         }
