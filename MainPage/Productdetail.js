@@ -2,9 +2,9 @@ let productID = {
     Id: localStorage.getItem('shopId')
 }
 
-let products = [];
 let added_products = [];
 window.addEventListener('load', async () => {
+
 
 
     let response = await (await fetch('http://localhost/BACKEND/USER/Productdetails.php?type=products', {
@@ -15,12 +15,29 @@ window.addEventListener('load', async () => {
         body: JSON.stringify(productID)
     })
     ).json();
+    // let i = 0;
+    let products = [];
+    // console.log(response, "PRODUCTS count= ", i + 1);
     products.push(response);
     let product_display_container = document.querySelector('.Product_display_container');
-
+    // User request handle function
+    function shopRequest(parameter) {
+        let response = localStorage.getItem(parameter);
+        return response;
+    }
     products[0].forEach((product, index) => {
         let shop_name = document.querySelector('.shop_name');
-        shop_name.innerHTML = product.shopname;
+        shop_name.innerHTML = shopRequest('shopName');
+
+        let shopCategory = document.querySelector('.shopCategory');
+        shopCategory.innerHTML = shopRequest('shopCategory');
+
+        let shopTiming = document.querySelector('.shopTiming');
+        shopTiming.innerHTML = shopRequest('shopTimings');
+
+        let shopAddress = document.querySelector('.shopAddress');
+        shopAddress.innerHTML = shopRequest('shopAddress');
+
         let product_card = document.createElement('div');
         product_card.id = "product_card";
 
@@ -88,10 +105,7 @@ window.addEventListener('load', async () => {
         product_action_container.appendChild(product_qty);
         product_action_container.appendChild(product_btn);
 
-
-
-
-
+        // Product add and remove functionality
         function product_add_remove() {
             if (product_btn.innerHTML == "Add") {
 
@@ -101,7 +115,7 @@ window.addEventListener('load', async () => {
                     productName: product.productname,
                     productQty: product_qty.value,
                     productPrice: Total_product_price,
-                    shopId: product.sid,
+                    shopId: localStorage.getItem('shopId'),
                     productId: product_btn.id
 
                 };
@@ -118,19 +132,44 @@ window.addEventListener('load', async () => {
             let product_length = document.querySelector('.product_length');
             product_length.innerHTML = added_products.length;
 
+            product_Send_To_Shop(added_products);
 
-            
         }
 
 
     });
 
-    
+
 })
 // order btn action
-let order_btn = document.querySelector('.order_btn');
-// order_btn.onclick=order_btn_click;
+async function product_Send_To_Shop(products) {
 
-// function order_btn_click() {
-//     alert();
-// }
+    console.log("parans", products);
+    let backend_url = "";
+    send_to_backend(products,backend_url)
+}
+
+// order btn action section
+
+let popup_model = document.querySelector('.popup_model');
+function show_model() {
+    popup_model.style.display = "block";
+}
+
+function close_model() {
+    popup_model.style.display = "none";
+
+
+}
+
+async function send_to_backend(data, url) {
+    let response = await (await fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    ).json();
+    return response;
+}

@@ -1,24 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="Productdetail.css">
 </head>
+
 <body>
-    <h1 class="shop_name"></h1>
+    <div class="shop_display_in_productdetails">
+        <h2 class="shop_name"> Shop Name</h2>
+        <p class="shopCategory">Shop Category</p>
+        <div class="shopAbout">About</div>
+        <p class="shopTiming">Shop Timing </p>
+        <p class="shopAddress">Shop Address</p>
+    </div>
+
     <div class="product_header">
-        <h2 style="color: rgb(121, 67, 2);">Products</h2>
-        <button class="order_btn"> Order  <div class="product_length">0</div></button> 
+        <h2 style="color: rgb(218, 149, 64);margin-left: 15px; font-family:Verdana, Geneva, Tahoma, sans-serif">Products
+        </h2>
+        <button class="order_btn" onclick="show_model()"> Order <div class="product_length">0</div></button>
 
         <div id="sample" class="sample1">
-            <div>hai</div>
-            </div>
+            <div></div>
+        </div>
     </div>
     <div class="Product_display_container">
-        
+
+    </div>
+
+    <div class="popup_model" style="display: none;">
+        <div class="close_modal" onclick="close_model()">&times;</div>
+
+        <form action="" method="post" class="popup_model_content">
+            <label for="User_Location_input" id="User_Location_label">Address :</label><br>
+            <input type="text" name="User_Location_input" id="User_Location_input">
+<br>
+            <label for="User_ContactDetails_input" id="User_ContactDetails_label">Contact Details :</label><br>
+            <input type="text" name="User_ContactDetails_input" id="User_ContactDetails_input">
+            <br>
+            <div class="total_product_price">
+
+                Total Price : <label for="total_product_price_input" class="total_product_price_input">0</label>
+            </div><br><br>
+            <input type="submit" value="SEND" class="order_send_btn" >
+        </form>
     </div>
 </body>
 <script src="Productdetail.js"></script>
+<script src="popupModal.js"></script>
+
 </html>

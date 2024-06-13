@@ -218,6 +218,9 @@ shop_details_form.addEventListener('submit', async (e) => {
     let Start_Time = entry.Start_time + " : " + entry.Start_minutes + "  " + entry.Start_AMPM;
     let End_Time = entry.End_time + " : " + entry.End_minutes + "  " + entry.End_AMPM;
 
+    // let a=new Blob(entry.ImgUrl);
+    
+    // console.log("Imag",a);
     // user selected shop image file to blob file 
     const ShopImgUrl = URL.createObjectURL(entry.ImgUrl);
 

@@ -12,6 +12,12 @@ let emptyShop = "https://images.unsplash.com/photo-1604066867775-43f48e3957d8?w=
 // body_container.innerHTML="Welcome to LSC";
 
 let shopdata = [];
+// if (shopdata.length==0) {
+//     alert("Loading...");
+// }else{
+// }
+
+
 let Url = "http://localhost/BACKEND/USER/ALLshopdata.php";
 
 // Fetch all data
@@ -20,6 +26,7 @@ window.addEventListener('load', async () => {
     let json_response = await response.json();
     shopdata.push(json_response);
     shopdata[0].forEach((shop) => {
+        console.log(shop);
         let shop_card = document.createElement('div');
         shop_card.className = "shop_card";
         shop_card.id = shop.sid;
@@ -50,10 +57,19 @@ window.addEventListener('load', async () => {
         shop_card.addEventListener('click', async () => {
             let clicked_shop_id = shop_card.id;
             localStorage.setItem('shopId', clicked_shop_id);
+            localStorage.setItem('shopName',shop.shopname);
+            localStorage.setItem('shopCategory',shop.Shop_category);
+            localStorage.setItem('shopAddress',shop.Location);
+            localStorage.setItem('shopContactDetails',shop.contactDetails);
+            localStorage.setItem('shopTimings',shop.Timing);
+
+
+
             window.location.href = "Productdetail.html";
         })
     });
-    console.log(shopdata);
+// }
+    // console.log(shopdata);
 
 })
 
@@ -70,7 +86,10 @@ window.addEventListener('load', async () => {
         body:JSON.stringify(user),
     })
     ).json();
-
-console.log(response);
+let i=0;
+console.log("RESPONSE= ",response,"=",i+1);
 })
+
+
+
  
