@@ -26,8 +26,6 @@ function shopdetails_click_handle() {
             shop_img_container.className = "shop_img_container";
 
 
-           
-
             shop_img_container.src = Shop_details_container['shopdetails'][0].ShopImgurl;
             shop_view_container.appendChild(shop_img_container);
 
@@ -108,13 +106,14 @@ async function productdetails_click_handle() {
     fetchUpdatedProductData();
 
 }
-
+// Unique data storing purpose i can use set()
 let products_data = new Set();
 let Productdetails_display_container = document.querySelector('.product_display_root_container');
 
 // Send request to the backend to access updated products
 async function fetchUpdatedProductData() {
     product_display_root_container.innerHTML = '';
+    // shop data send to recive the product data
     let shop_data = {
         shop_id: localStorage.getItem('admin_id')
     }
@@ -126,65 +125,141 @@ async function fetchUpdatedProductData() {
         body: JSON.stringify(shop_data)
     })
     ).json();
+    console.log("Backend Products response",backend_response);
 
-    // clear the set() data
+    // clear the previous stored set() data and storing new fetched data
     products_data.clear();
     backend_response.forEach(products => {
         products_data.add(products);
     });
 
+//  set() to array convert to show the products 
     let Unique_products = Array.from(products_data);
     console.log("set", Unique_products);
     product_display_root_container.style.display = "block";
     products_action.style.display = "block";
 
-    Unique_products.reverse().forEach((products) => {
-        product_display_root_container.id = products.product_no;
-        let product_display = document.createElement('div');
-        // product_display.innerHTML='';
-        product_display.className = "product_display";
-        let product_img = document.createElement('img');
-        product_img.width = "20";
-        product_img.height = "20";
 
-        let product_price = document.createElement('h5');
-        let Product_name = document.createElement('h4');
+    let product_table=document.createElement('table');
+    product_table.style.width="100%";
+    product_table.style.borderCollapse="collapse";
+    
+    let product_head_row=document.createElement('tr');
+    product_head_row.style.backgroundColor="white";
 
-        let product_desc = document.createElement('div');
-        product_desc.className = "product_desc";
-        let product_delete_btn_container = document.createElement('div');
-        product_delete_btn_container.className = "delete_btn_container";
-        product_delete_btn_container.id = products.product_no;
-        let product_delete_btn = document.createElement('h5');
-        product_delete_btn.className = "delete_btn";
-        product_delete_btn.innerHTML = "Delete";
+    let product_img_title=document.createElement('th');
+    product_img_title.innerHTML="Image";
+    product_img_title.style.border="1px solid gray";
+    product_img_title.style.padding="8px";
+    product_img_title.style.padding="15px";
+
+    
+    let product_name_title=document.createElement('th');
+    product_name_title.innerHTML="Name";
+    product_name_title.style.border="1px solid gray";
+    product_name_title.style.padding="8px";
+    
+    let product_price_title=document.createElement('th');
+    product_price_title.innerHTML="Price";
+    product_price_title.style.border="1px solid gray";
+    product_price_title.style.padding="8px";
+    
+    let product_desc_title=document.createElement('th');
+    product_desc_title.innerHTML="Description";
+    product_desc_title.style.border="1px solid gray";
+    product_desc_title.style.padding="8px";
+    
+    let product_action_title=document.createElement('th');
+    product_action_title.innerHTML="Action";
+    product_action_title.style.border="1px solid gray";
+    product_action_title.style.padding="8px";
+    
+    product_head_row.appendChild(product_img_title);
+    product_head_row.appendChild(product_name_title);
+    product_head_row.appendChild(product_price_title);
+    product_head_row.appendChild(product_desc_title);
+    product_head_row.appendChild(product_action_title);
+    product_table.appendChild(product_head_row);
+    
+
+    Unique_products.reverse().forEach((product,id) => {
+
+        let product_row=document.createElement('tr');
+        product_row.style.backgroundColor="gray";
+        product_row.style.border="1px solid #2a2a2a";
 
 
-        product_img.src = products.product_url;
-
-        Product_name.innerHTML = products.productname;
-
-        product_price.innerHTML = products.price;
-
-        product_desc.innerHTML = products.product_desc;
-
-        Productdetails_display_container.appendChild(product_display);
-        product_display.appendChild(product_img);
-        product_display.appendChild(Product_name);
-        product_display.appendChild(product_price);
-        product_display.appendChild(product_desc);
-        product_display.append(product_delete_btn_container);
-        product_delete_btn_container.appendChild(product_delete_btn);
+        let img_td=document.createElement('td');
+        
+        let product_img=document.createElement('img');
+        product_img.src=product.product_url;
+        product_img.width="55";
+        product_img.height="60";
+        product_img.style.marginLeft="10px";
+        product_img.style.borderRadius="6px";
 
 
-        // Delete product action
-        product_delete_btn_container.addEventListener('click', async () => {
+        
+        // Name display
+        let name_td=document.createElement('td');
+        let product_name=document.createElement('h3');
+        product_name.innerHTML=product.productname;
+        product_name.style.marginLeft="10px";
+        
+        // Price display
+        let price_td=document.createElement('td');
+        let product_price=document.createElement('h5');
+        product_price.innerHTML=product.price;
+        product_price.style.marginLeft="10px";
+        
+        // Price display
+        let desc_td=document.createElement('td');
+        let product_desc=document.createElement('h5');
+        product_desc.innerHTML=product.product_desc;
+        product_desc.style.marginLeft="10px";
+        
+        // Action display
+        let delete_td=document.createElement('td');
+        delete_td.id=product.product_no;
+        delete_td.style.textAlign="center";
+        delete_td.style.border="1px solid #2a2a2a";
+
+
+
+        let product_delete=document.createElement('h5');
+        product_delete.innerHTML="Delete";
+        product_delete.style.background="red";
+        product_delete.style.padding="10px";
+        product_delete.style.border="none";
+        product_delete.style.borderRadius="10px";
+        product_delete.style.display="inline-block";
+        product_delete.style.marginLeft="10px";
+        
+        
+        
+        product_row.appendChild(img_td);
+        img_td.appendChild(product_img);
+        
+        product_row.appendChild(name_td);
+        name_td.appendChild(product_name);
+        
+        product_row.appendChild(price_td);
+        price_td.appendChild(product_price);
+        
+        product_row.appendChild(desc_td);
+        desc_td.appendChild(product_desc);
+        
+        product_row.appendChild(delete_td);
+        delete_td.appendChild(product_delete);
+        
+        product_table.appendChild(product_row);
+        delete_td.addEventListener('click', async () => {
             let delete_confirm = window.confirm("Are you sure you want to delete this product?");
             if (delete_confirm) {
-
-
+        
+        
                 let deleted_product = {
-                    product_id: product_delete_btn_container.id
+                    product_id: delete_td.id
                 }
                 let product_delete_response = await (await fetch('http://localhost/backend/ADMIN/Admin_action/Productdetails.php?type=delete_product', {
                     method: "POST",
@@ -201,6 +276,7 @@ async function fetchUpdatedProductData() {
                 }
             }
         })
+        Productdetails_display_container.appendChild(product_table);
 
     });
 
@@ -215,18 +291,14 @@ shop_details_form.addEventListener('submit', async (e) => {
     // Formdata object used to get the input data and access the data based on the 'name' attribute .
     const form_data = new FormData(e.target);
     const entry = Object.fromEntries(form_data.entries());
-    let Start_Time = entry.Start_time + " : " + entry.Start_minutes + "  " + entry.Start_AMPM;
-    let End_Time = entry.End_time + " : " + entry.End_minutes + "  " + entry.End_AMPM;
 
-    // let a=new Blob(entry.ImgUrl);
-    
-    // console.log("Imag",a);
-    // user selected shop image file to blob file 
-    const ShopImgUrl = URL.createObjectURL(entry.ImgUrl);
+    // Here i can call function using 'await' because when you can call asynchronus function then you can use this await to call that function otherwice it return promise
+    let imgUrl=await upload(form_data,"shop_image_upload");
+    let shopImgurl=imgUrl.shopimg;
+    let shopLogoUrl=imgUrl.shoplogo;
 
-    // user selected shop Logo image file to blob file 
-    const ShopLogoUrl = URL.createObjectURL(entry.logoUrl);
-console.log(ShopImgUrl);
+
+
 
     // Shop id access to the localstorage
     let admin_id = localStorage.getItem('admin_id');
@@ -236,9 +308,9 @@ console.log(ShopImgUrl);
         shop_owner_name: entry.Oname,
         shop_category: entry.Category,
         shop_location: entry.Location,
-        shop_timings: Start_Time + " - " + End_Time,
-        shop_imgUrl: ShopImgUrl,
-        shop_logoUrl: ShopLogoUrl,
+        shop_timings: displayTiming(entry),
+        shop_imgUrl:shopImgurl ,
+        shop_logoUrl: shopLogoUrl,
         shop_contact_details: entry.contactdetails,
         shop_email: entry.email,
     }
@@ -251,7 +323,7 @@ console.log(ShopImgUrl);
     })
     ).json();
     if (response) {
-
+        console.log("rsponse", response);
         localStorage.setItem('shop', '1');
         localStorage.setItem('shop_presence', "true");
         if (localStorage.getItem('shop_presence') == "true") {
@@ -262,4 +334,38 @@ console.log(ShopImgUrl);
 
     console.log(response);
 })
+
+async function upload(form_data,type) {
+    let uploadResponse = await (await fetch('http://localhost/BACKEND/ADMIN/ADMIN_ACTION/upload.php?type='+type, {
+        method: 'POST',
+        body: form_data
+    })
+    ).json();
+    if (type=="shop_image_upload") {
+        let shopImgurl={
+            shopimg:uploadResponse.shopImgPath,
+            shoplogo:uploadResponse.logoImgPath
+            }
+            return shopImgurl;
+    }
+    if (type=="product_image_upload") {
+        let productImgurl={
+            productImg:uploadResponse.productImgPath,
+            }
+            return productImgurl;
+    }
+}
+
+function displayTiming(time) {
+    let open_Time = 0;
+    let end_Time = 0;
+    if (time.Start_time <= 12 && time.Start_minutes <= 60) {
+        open_Time = time.Start_time + " : " + time.Start_minutes + "  " + time.Start_AMPM;
+    }
+    if (time.End_time <= 12 && time.End_minutes <= 60) {
+        end_Time = time.End_time + " : " + time.End_minutes + "  " + time.End_AMPM;
+    }
+    return open_Time+" to "+end_Time;
+}
+
 

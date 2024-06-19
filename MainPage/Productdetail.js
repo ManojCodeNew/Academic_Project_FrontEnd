@@ -3,9 +3,8 @@ let productID = {
 }
 
 let added_products = [];
+// Fetching products
 window.addEventListener('load', async () => {
-
-
 
     let response = await (await fetch('http://localhost/BACKEND/USER/Productdetails.php?type=products', {
         method: 'POST',
@@ -15,13 +14,12 @@ window.addEventListener('load', async () => {
         body: JSON.stringify(productID)
     })
     ).json();
-    // let i = 0;
     let products = [];
-    // console.log(response, "PRODUCTS count= ", i + 1);
     products.push(response);
     let product_display_container = document.querySelector('.Product_display_container');
     // User request handle function
     function shopRequest(parameter) {
+        // Get landingPage.js stored shopdetails on a localstorage
         let response = localStorage.getItem(parameter);
         return response;
     }
@@ -38,6 +36,7 @@ window.addEventListener('load', async () => {
         let shopAddress = document.querySelector('.shopAddress');
         shopAddress.innerHTML = shopRequest('shopAddress');
 
+        // Product diplaying container
         let product_card = document.createElement('div');
         product_card.id = "product_card";
 
@@ -105,12 +104,16 @@ window.addEventListener('load', async () => {
         product_action_container.appendChild(product_qty);
         product_action_container.appendChild(product_btn);
 
+
+        function currentQty() {
+            return product_qty.value;
+        }
         // Product add and remove functionality
         function product_add_remove() {
             if (product_btn.innerHTML == "Add") {
 
                 // Adding process
-                let Total_product_price = product.price * product_qty.value;
+                let Total_product_price = product.price *currentQty() ;
                 let add_product_obj = {
                     productName: product.productname,
                     productQty: product_qty.value,
@@ -132,35 +135,60 @@ window.addEventListener('load', async () => {
             let product_length = document.querySelector('.product_length');
             product_length.innerHTML = added_products.length;
 
-            product_Send_To_Shop(added_products);
-
         }
-
-
     });
 
 
 })
-// order btn action
-async function product_Send_To_Shop(products) {
 
-    console.log("parans", products);
-    let backend_url = "";
-    send_to_backend(products,backend_url)
-}
-
-// order btn action section
-
+// popup model close and open
 let popup_model = document.querySelector('.popup_model');
 function show_model() {
+    if (added_products.length==0) {
+        alert("Please add products");
+    }else{
+        let Total_price_show=document.querySelector('.total_product_price_input');
+        let totalProductPrice=0;
+        for (let i = 0; i < added_products.length; i++) {
+            // const element = array[i];
+        totalProductPrice=totalProductPrice+added_products[i].productPrice;
+            
+        }
+        Total_price_show.innerHTML=totalProductPrice;
     popup_model.style.display = "block";
+    }
 }
 
 function close_model() {
     popup_model.style.display = "none";
-
-
 }
+
+
+// Get user model form data
+let popup_model_form = document.querySelector('.popup_model_content');
+popup_model_form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let form_data = new FormData(e.target);
+    let entry = Object.fromEntries(form_data.entries())
+
+    // Date and Time access using this Object
+    let now = new Date();
+
+    let userOrderDataContainer = {
+        userAddress: entry.User_Location_input,
+        userContactDetails: entry.User_ContactDetails_input,
+        ordered_Time: now.toLocaleTimeString(),
+        ordered_Date: now.toLocaleDateString(),
+        ordered_products:added_products,
+
+    }
+    // Stored to the localStorage
+    localStorage.setItem('userOrderDataContainer', JSON.stringify(userOrderDataContainer));
+
+    let backend_url = "http://localhost/backend/User/OrderedProduct.php?type=ordered_products";
+    send_to_backend(userOrderDataContainer, backend_url);
+})
+
 
 async function send_to_backend(data, url) {
     let response = await (await fetch(url, {
@@ -171,5 +199,6 @@ async function send_to_backend(data, url) {
         body: JSON.stringify(data)
     })
     ).json();
+    console.log(response);
     return response;
 }

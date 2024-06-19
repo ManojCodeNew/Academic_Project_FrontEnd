@@ -43,7 +43,7 @@
         <div class="Shopdetails_body" style="display :none;">
             <div class="shopdetail_Container">
                 <h3 class="SD_heading">SHOP DETAILS</h3>
-                <form action="" method="post" id="SD_Form">
+                <form action="" method="post" id="SD_Form" enctype="multipart/form-data">
                     <label for="sname" class="SD_labels">Shop Name</label><br>
                     <input type="text" name="sname" class="SD_txtbox" required><br>
 
@@ -84,10 +84,10 @@
                     </div>
 
                     <label for="ImgUrl" class="SD_labels">Shop Image URL</label><br>
-                    <input type="file" name="ImgUrl" accept="Image/*" class="SD_txtbox" required><br>
+                    <input type="file" name="ImgUrl" accept="Image/*" class="SD_txtbox" id="ImgUrl" required><br>
 
                     <label for="logoUrl" class="SD_labels">Shop Logo URL</label><br>
-                    <input type="file" name="logoUrl" accept="Image/*" class="SD_txtbox"><br>
+                    <input type="file" name="logoUrl" accept="Image/*" id="logoUrl" class="SD_txtbox"><br>
 
                     <label for="contactdetails" class="SD_labels">Contact Details</label><br>
                     <input type="text" name="contactdetails" class="SD_txtbox"><br>
@@ -97,7 +97,7 @@
                         <input type="text" name="email" class="SD_txtbox" required></abbr><br>
 
                     <button name="shop_submit" class="SD_submitbtn"
-                        onclick="shopdetails_form_submit_handle()">Submit</button>
+                        onclick="">Submit</button>
                 </form>
             </div>
         </div>
@@ -143,7 +143,7 @@
                         placeholder="Enter your product description here..."  id="product_desc" required></textarea><br>
 
                     <label for="product_img" class="PD_form_label">Product Image Url :</label><br>
-                    <input type="url" name="product_img_input" class="PD_form_textbox" id="product_img" required><br>
+                    <input type="file" name="product_img_input" class="PD_form_textbox" id="product_img" accept="Image/*" required><br>
 
                     <button name="product_submit" class="submitbtn" onclick="product_submit_handle()">Submit</button>
                 </form>

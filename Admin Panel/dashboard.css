@@ -26,7 +26,7 @@ body {
     height: 50px;
     text-align: center;
     align-content: center;
-    border: 1px solid gray;
+    border: 1px solid hwb(0 16% 84%);
     border-radius: 10px;
     margin-top: 420px;
     cursor: pointer;
@@ -54,13 +54,6 @@ body {
     color: aliceblue;
     border-radius: 10px;
 }
-
-
-/* .side_bar h2 {
-    margin-left: 20px;
-
-} */
-
 
 
 /* .section {
@@ -261,7 +254,7 @@ body {
 }
 
 .Productdetails_body {
-    border: 1px solid white;
+    /* border: 1px solid white; */
 
     width: 70vw;
     height: 100vh;
@@ -283,6 +276,7 @@ body {
 }
 
 .product_display {
+
     display: flex;
     flex-grow: 1;
     /* flex-direction: row; */
@@ -363,6 +357,8 @@ body {
     overflow: auto;
     background: #3c3b3b;
     color: rgb(15, 15, 15);
+    border-radius: 7px;
+
     
 }
 /* Remove scrolling object */

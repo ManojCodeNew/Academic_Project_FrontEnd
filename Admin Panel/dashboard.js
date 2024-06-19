@@ -29,7 +29,6 @@ if (logout_status == 1) {
         //Clear LocalStorage
         localStorage.clear();
         window.location.reload();
-        // window.location.href="http://127.0.0.1:5500/Account%20Setup%20Process/AdminLogin.html";
 
     }
     else {
@@ -74,14 +73,10 @@ let shop_profile_img_container = document.querySelector(".profile_img");
             shop_owner_name_container.innerHTML = dashboard_backend_response['shopdetails'][0].ownername;
             shop_profile_img_container.src = dashboard_backend_response['shopdetails'][0].logoUrl;
         }
-        console.log("HAi");
         console.log("dashboard", dashboard_backend_response);
     
     });
-//     let convertedImage="blob:http://127.0.0.1:5500/0a123751-f2b5-4f2e-be63-53edf9adf36f";
-    
-//    let b=URL.revokeObjectURL(convertedImage);
-//    console.log(b);
+
 
 
 
