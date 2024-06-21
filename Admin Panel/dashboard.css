@@ -124,6 +124,7 @@ body {
 .productdetails_btn_container {
     color: azure;
     border-radius: 10px;
+
 }
 
 .productdetails_btn_container h3 {
@@ -133,6 +134,8 @@ body {
 
 .productdetails_btn_container:hover {
     background-color: rgb(62, 61, 61);
+    transition: background-color 0.4s ease;
+
 }
 
 /* Product Details text button Design section  End*/
@@ -377,9 +380,7 @@ body {
     flex-direction: row;
     justify-content:space-between;
 } 
-.delete_btn_container{
- 
-}
+
 
 .delete_btn{
    border: 1px solid rgb(0, 0, 0);
@@ -497,4 +498,19 @@ border-radius: 7px;
    color: black;
    font-weight: 600;
    font-size: larger;
+}
+.orderDetails_section{
+    margin: 5px;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    /* padding: 1px; */
+}
+.orderDetails_section:hover{
+    background-color: rgb(62, 61, 61);
+    transition: background-color 0.4s ease;
+}
+.orderDetailsBtn{
+    padding: 10px;
 }

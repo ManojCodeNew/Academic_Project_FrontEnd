@@ -113,7 +113,7 @@ window.addEventListener('load', async () => {
             if (product_btn.innerHTML == "Add") {
 
                 // Adding process
-                let Total_product_price = product.price *currentQty() ;
+                let Total_product_price = product.price * currentQty();
                 let add_product_obj = {
                     productName: product.productname,
                     productQty: product_qty.value,
@@ -144,18 +144,18 @@ window.addEventListener('load', async () => {
 // popup model close and open
 let popup_model = document.querySelector('.popup_model');
 function show_model() {
-    if (added_products.length==0) {
+    if (added_products.length == 0) {
         alert("Please add products");
-    }else{
-        let Total_price_show=document.querySelector('.total_product_price_input');
-        let totalProductPrice=0;
+    } else {
+        let Total_price_show = document.querySelector('.total_product_price_input');
+        let totalProductPrice = 0;
         for (let i = 0; i < added_products.length; i++) {
             // const element = array[i];
-        totalProductPrice=totalProductPrice+added_products[i].productPrice;
-            
+            totalProductPrice = totalProductPrice + added_products[i].productPrice;
+
         }
-        Total_price_show.innerHTML=totalProductPrice;
-    popup_model.style.display = "block";
+        Total_price_show.innerHTML = totalProductPrice;
+        popup_model.style.display = "block";
     }
 }
 
@@ -174,19 +174,27 @@ popup_model_form.addEventListener('submit', (e) => {
     // Date and Time access using this Object
     let now = new Date();
 
-    let userOrderDataContainer = {
-        userAddress: entry.User_Location_input,
-        userContactDetails: entry.User_ContactDetails_input,
-        ordered_Time: now.toLocaleTimeString(),
-        ordered_Date: now.toLocaleDateString(),
-        ordered_products:added_products,
+    for (let i = 0; i < added_products.length; i++) {
 
+
+
+        let userOrderDataContainer = {
+            userAddress: entry.User_Location_input,
+            userContactDetails: entry.User_ContactDetails_input,
+            ordered_Time: now.toLocaleTimeString(),
+            ordered_Date: now.toLocaleDateString(),
+            userId:localStorage.getItem('user_id'),
+            productName:added_products[i].productName,
+            productPrice:added_products[i].productPrice,
+            productQty:added_products[i].productQty,
+            shopId:added_products[i].shopId,
+
+        }
+
+        let backend_url = "http://localhost/backend/User/OrderedProduct.php?type=ordered_products";
+        send_to_backend(userOrderDataContainer, backend_url);
+        console.log("Ordered data", userOrderDataContainer);
     }
-    // Stored to the localStorage
-    localStorage.setItem('userOrderDataContainer', JSON.stringify(userOrderDataContainer));
-
-    let backend_url = "http://localhost/backend/User/OrderedProduct.php?type=ordered_products";
-    send_to_backend(userOrderDataContainer, backend_url);
 })
 
 
@@ -199,6 +207,11 @@ async function send_to_backend(data, url) {
         body: JSON.stringify(data)
     })
     ).json();
-    console.log(response);
-    return response;
+    if (response.msg=="ordered product saved successfully") {
+        popup_model.style.display='none';
+        showNotification('success',"Saved successfully");
+    }else{
+        showNotification('error',"Saved failed");
+
+    }
 }

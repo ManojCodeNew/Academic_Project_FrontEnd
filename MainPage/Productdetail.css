@@ -141,6 +141,7 @@ body {
     background: rgb(45, 72, 88);
 }
 
+/* popup model */
 .popup_model{
     /* Display or not */
     display: block;
@@ -161,6 +162,7 @@ body {
     border-radius: 10px;
 
 }
+
 .popup_model_content{
     display: flex;
     flex-direction: column;    
@@ -214,4 +216,39 @@ body {
 }
 .total_product_price{
    text-align: center;
+}
+
+/* Pop up notification */
+.popup_notification{
+    display: block;
+    position: fixed;
+    z-index: 1;
+    left: 75%;
+    top: 2%;
+    bottom: 10%;
+    width: 20vw;
+    height: 4%;
+    overflow: auto;
+    /* background-color: #fcfcfcf6; */
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 10px;
+    border:1px solid white;
+    padding: 20px;
+    transition: opacity 1s ease-in-out;
+    visibility: hidden;
+}
+.popup_notification.show{
+opacity: 1;
+visibility: visible;
+transition: opacity 0.5s ease-in;
+}
+
+.notification_txt{
+    /* color: green; */
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-size: large;
+    margin-top: 8px;
+    margin-left: 10px;
+    /* color: #a70000; */
 }
